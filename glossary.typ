@@ -1,9 +1,9 @@
 // Acronym definitions for the document
-// Using Typst's state to handle acronyms
+// Simple approach without state management
 
 #let acronyms = (
   "llm": ("LLM", "Large Language Model"),
-  "ai": ("AI", "Artficial Intelligence"),
+  "ai": ("AI", "Artificial Intelligence"),
   "dl": ("DL", "Deep Learning"),
   "cot": ("CoT", "Chain of Thought"),
   "lora": ("LoRA", "Low Rank Adapter"),
@@ -20,7 +20,7 @@
   "cuda": ("CUDA", "Compute Unified Device Architecture"),
   "opencl": ("OpenCL", "Open Compute Library"),
   "llada": ("LLaDA", "Large Language Diffusion with Masking"),
-  "rag": ("RAG", "Retrival Augemented Generation"),
+  "rag": ("RAG", "Retrieval Augmented Generation"),
   "cag": ("CAG", "Cache Augmented Generation"),
   "ann": ("ANN", "Artificial Neural Network"),
   "alice": ("ALICE", "Artificial Linguistic Internet Computer Entity"),
@@ -29,7 +29,7 @@
   "lru": ("LRU", "Linear Recurrent Unit"),
   "aicef": ("AiCEF", "AI-assisted Cyber Exercise Content generation Framework"),
   "vae": ("VAE", "Variational Autoencoders"),
-  "gan": ("GAN", "Generational Adversarial Networks"),
+  "gan": ("GAN", "Generative Adversarial Networks"),
   "cpu": ("CPU", "Central Processing Unit"),
   "gpu": ("GPU", "Graphics Processing Unit"),
   "gpgpu": ("GPGPU", "General-purpose computing on graphics processing units"),
@@ -51,20 +51,7 @@
   "iac": ("IaC", "Infrastructure as Code")
 )
 
-// Track which acronyms have been used using state
-#let used-acronyms = state("used-acronyms", ())
-
-// Function to display acronym short form
-#let acrshort(key) = {
-  if key in acronyms {
-    let (short, full) = acronyms.at(key)
-    text[#short]
-  } else {
-    text[Unknown acronym: #key]
-  }
-}
-
-// Function to always display full form
+// Function to display full form with short form in parentheses
 #let acrfull(key) = {
   if key in acronyms {
     let (short, full) = acronyms.at(key)
@@ -74,7 +61,17 @@
   }
 }
 
-// Function to display long form (full form)
+// Function to display short form only
+#let acrshort(key) = {
+  if key in acronyms {
+    let (short, full) = acronyms.at(key)
+    text[#short]
+  } else {
+    text[Unknown acronym: #key]
+  }
+}
+
+// Function to display full form only
 #let acrlong(key) = {
   if key in acronyms {
     let (short, full) = acronyms.at(key)
@@ -84,10 +81,14 @@
   }
 }
 
-// Function to generate glossary
+// Function to generate complete glossary of all defined acronyms
 #let printglossary() = {
   heading(level: 1)[Acronyms]
-  for (key, (short, full)) in acronyms.sorted(key: x => x.first()) {
+  for key in acronyms.keys().sorted() {
+    let (short, full) = acronyms.at(key)
     par[#short: #full]
   }
 }
+
+// Alias for consistency with previous version
+#let acronym = acrfull

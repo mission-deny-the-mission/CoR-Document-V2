@@ -51,7 +51,7 @@ Most current cybersecurity training exercises are based on static or heuristical
 
 A significant research gap exists in leveraging state-of-the-art generative AI models for comprehensive cybersecurity education. While some systems incorporate basic AI elements, none fully exploit the potential of modern large language models (LLMs) for dynamic scenario generation, realistic chatbot interactions, and automated vulnerability creation. This thesis addresses this gap by exploring how frontier open generative AI models can enhance realism and immersion in cybersecurity training.
 
-The proposed PhD thesis will cover the uses of Generative AI models such as #acrfull("llm") and image generators in educational cybersecurity simulations including hacking challenges such as #acrfull("ctf") and #acrfull("koth"). This will include using #acrshort("llm")s to generate narrative content (thematic learning scenario content), provide realistic chatbots for students to interact with, and even generate randomized challenges such as unique malware for malware analysis challenges or randomly generated insecure systems and software.
+The proposed PhD thesis will cover the uses of Generative AI models such as #acronym("llm") and image generators in educational cybersecurity simulations including hacking challenges such as #acronym("ctf") and #acronym("koth"). This will include using #acronym("llm")s to generate narrative content (thematic learning scenario content), provide realistic chatbots for students to interact with, and even generate randomized challenges such as unique malware for malware analysis challenges or randomly generated insecure systems and software.
 
 = Aims and Objectives
 
@@ -59,19 +59,19 @@ The proposed PhD thesis will cover the uses of Generative AI models such as #acr
 Use AI to improve realism, immersion, and to assist learning
 
 == Objectives:
-+ Investigate how #acrshort("ai") models can interact with students during cyber security training scenarios
++ Investigate how #acronym("ai") models can interact with students during cyber security training scenarios
   + Setup and test chatbots acting as employees and threat actors in challenges
-  + Test the ability of #acrshort("llm")s to give hints and tips without giving away complete answers
-+ Explore the use of #acrshort("ai") in #acrfull("apg")
-  + Explore using #acrshort("llm")s in sample malware generation for use in malware analysis classes
-  + Explore using #acrshort("llm")s in generating insecure software and system configurations
-  + Explore using #acrshort("llm")s and image generation models in creating narrative content
+  + Test the ability of #acronym("llm")s to give hints and tips without giving away complete answers
++ Explore the use of #acronym("ai") in #acronym("apg")
+  + Explore using #acronym("llm")s in sample malware generation for use in malware analysis classes
+  + Explore using #acronym("llm")s in generating insecure software and system configurations
+  + Explore using #acronym("llm")s and image generation models in creating narrative content
 
 = Research Questions
 
 == Hackerbot study
 + What architecture and techniques are the most effective for the educational chatbot powered by LLMs.
-  + Is RAG, CAG, or fine tuning more effective for feeding #acrshort("LLM")s resources about cybersecurity
+  + Is RAG, CAG, or fine tuning more effective for feeding #acronym("llm")s resources about cybersecurity
   + What sort of prompt engineering works best?
 + How can roleplaying personalities make education bots more effective
   + What kind of prompting techniques help with roleplaying?
@@ -80,13 +80,13 @@ Use AI to improve realism, immersion, and to assist learning
   + What kind of hardware resources are required to run the models locally?
   + Can inference be done scalably using only CPUs?
   + What size of model is needed for an AI bot for this kind of chatbot?
-  + Which #acrshort("LLM")s are most effective?
+  + Which #acronym("llm")s are most effective?
 
 == Malware generation and obfscuation study
 
 + What techniques are most effective at doing randomized malware generation for malware analysis labs?
 + To what extent can the malware generation be automated? Partly or fully?
-+ How can #acrshort("LLM")s be used to obfscuate existing malware in ways that make it more complex to analyze?
++ How can #acronym("llm")s be used to obfscuate existing malware in ways that make it more complex to analyze?
 
 #include "literature-review.typ"
 
@@ -100,7 +100,7 @@ The software development cycle for this research will follow an agile approach, 
 
 Version control using Git will be employed throughout the development lifecycle to track changes, facilitate collaboration, and maintain code quality. Regular code reviews and documentation updates will be conducted to maintain software quality and knowledge transfer.
 
-Technical criteria include the functionality of the system, the associated costs and resource usage associated with using the #acrshort("ai")s. For scenario generation the time taken and success rate at generating scenarios and malware must be measured. For the chatbot studies responsiveness and generation speed in tokens per second must be measured. Responsivness to student queries is important for satisfaction of the students.
+Technical criteria include the functionality of the system, the associated costs and resource usage associated with using the #acronym("ai")s. For scenario generation the time taken and success rate at generating scenarios and malware must be measured. For the chatbot studies responsiveness and generation speed in tokens per second must be measured. Responsivness to student queries is important for satisfaction of the students.
 
 Student experience will be measured through surveys. Statistical and thematic analysis will be performed on the surveys to see how students felt about the new capabilities of the system. It must also be ensured that the chatbots do not give away information or answers that the students should not have.
 
@@ -112,9 +112,9 @@ Generating narrative content should be more or less trivial for current machine 
 
 Integrating AI into hackerbot is well under way. The main concerns are over resource consumption and how well smaller models are able to perform the tasks required. More thorough testing of small model capabilties is required. This is largely an infrastructure problem and won't get in the way of proving it to be possible. Small models capable of running on limited infrastructure such as Gemma 1B and LFM2 1.2B have been found, and initial tests on inference speed and output quality are positive.
 
-Generating malware and obfuscating malware is more complicated. This requires the use of powerful #acrshort("llm")s that require lots of computational resources. The problem being that cloud hosting is made difficult by the nature of generating malware and potentially requiring uncensored models.
+Generating malware and obfuscating malware is more complicated. This requires the use of powerful #acronym("llm")s that require lots of computational resources. The problem being that cloud hosting is made difficult by the nature of generating malware and potentially requiring uncensored models.
 
-The feasibility of generating insecure software and system configurations is difficult to determine. It highly depends on the performance of frontier #acrshort("llm")s and surrounding tooling. Medium sized uncensored models are capable of generating code for malware, but it is unclear how similar this malware is to malware found in real cyber attacks. Techniques using agentic AI and AI agents will need to be tested and iterated upon.
+The feasibility of generating insecure software and system configurations is difficult to determine. It highly depends on the performance of frontier #acronym("llm")s and surrounding tooling. Medium sized uncensored models are capable of generating code for malware, but it is unclear how similar this malware is to malware found in real cyber attacks. Techniques using agentic AI and AI agents will need to be tested and iterated upon.
 
 = Training and development
 
@@ -123,3 +123,5 @@ If techniques such as fine tuning and TransMLA are to be used then training may 
 Training in malware analysis will also be necessary in order to have the skills to evaluate artificially generated malware.
 
 #bibliography("combined-references.bib", style: "harvard-cite-them-right")
+
+#printglossary()
