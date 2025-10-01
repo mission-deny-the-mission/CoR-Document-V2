@@ -1,5 +1,5 @@
 // Acronym definitions for the document
-// Simple approach without state management
+// With proper label-based hyperlink system
 
 #let acronyms = (
   "llm": ("LLM", "Large Language Model"),
@@ -51,8 +51,53 @@
   "iac": ("IaC", "Infrastructure as Code")
 )
 
-// Function to display full form with short form in parentheses
+// Function to display full form with short form in parentheses (clickable)
 #let acrfull(key) = {
+  if key in acronyms {
+    let (short, full) = acronyms.at(key)
+    // Create a link that references the glossary section label
+    link(
+      <glossary-section>,
+      text(fill: blue, [#full (#short)])
+    )
+  } else {
+    text[Unknown acronym: #key]
+  }
+}
+
+// Function to display short form only (clickable)
+#let acrshort(key) = {
+  if key in acronyms {
+    let (short, full) = acronyms.at(key)
+    // Create a link that references the glossary section label
+    link(
+      <glossary-section>,
+      text(fill: blue, [#short])
+    )
+  } else {
+    text[Unknown acronym: #key]
+  }
+}
+
+// Function to display full form only (clickable)
+#let acrlong(key) = {
+  if key in acronyms {
+    let (short, full) = acronyms.at(key)
+    // Create a link that references the glossary section label
+    link(
+      <glossary-section>,
+      text(fill: blue, [#full])
+    )
+  } else {
+    text[Unknown acronym: #key]
+  }
+}
+
+// Alias for consistency with previous version
+#let acronym = acrfull
+
+// Function to display full form without hyperlinks (clean version)
+#let acrfull-plain(key) = {
   if key in acronyms {
     let (short, full) = acronyms.at(key)
     text[#full (#short)]
@@ -61,8 +106,8 @@
   }
 }
 
-// Function to display short form only
-#let acrshort(key) = {
+// Function to display short form without hyperlinks (clean version)
+#let acrshort-plain(key) = {
   if key in acronyms {
     let (short, full) = acronyms.at(key)
     text[#short]
@@ -71,8 +116,8 @@
   }
 }
 
-// Function to display full form only
-#let acrlong(key) = {
+// Function to display long form without hyperlinks (clean version)
+#let acrlong-plain(key) = {
   if key in acronyms {
     let (short, full) = acronyms.at(key)
     text[#full]
@@ -81,14 +126,54 @@
   }
 }
 
-// Function to generate complete glossary of all defined acronyms
+// Plain alias for consistency with previous version (no hyperlinks)
+#let acronym-plain = acrfull-plain
+
+// Function to generate complete glossary with proper label anchor
 #let printglossary() = {
-  heading(level: 1)[Acronyms]
-  for key in acronyms.keys().sorted() {
-    let (short, full) = acronyms.at(key)
-    par[#short: #full]
-  }
+  // Create the glossary section with a label for linking
+  [
+    = Acronyms <glossary-section>
+
+    #for key in acronyms.keys().sorted() {
+      let (short, full) = acronyms.at(key)
+      par[#text(weight: "bold")[#short:] #full]
+    }
+  ]
 }
 
-// Alias for consistency with previous version
-#let acronym = acrfull
+// Alternative: Print glossary in two columns for better space utilization
+#let printcompactglossary() = {
+  // Create the glossary section with a label for linking
+  [
+    = Acronyms <glossary-section>
+
+    // Display in two columns
+    #let keys = acronyms.keys().sorted()
+    #let mid = calc.ceil(keys.len() / 2)
+
+    #columns(2)[
+      #for i in range(mid) {
+        let key = keys.at(i)
+        let (short, full) = acronyms.at(key)
+        par[#text(weight: "bold")[#short:] #full]
+      }
+    ][
+      #for i in range(mid, keys.len()) {
+        let key = keys.at(i)
+        let (short, full) = acronyms.at(key)
+        par[#text(weight: "bold")[#short:] #full]
+      }
+    ]
+  ]
+}
+
+// Function to generate glossary without any hyperlinks or anchors (plain version)
+#let printplainglossary() = {
+  heading(level: 1)[Acronyms]
+
+  for key in acronyms.keys().sorted() {
+    let (short, full) = acronyms.at(key)
+    par[#text(weight: "bold")[#short:] #full]
+  }
+}
