@@ -3,5 +3,4 @@ tasks.log
 build/
 *.tex
 *.pdf
-*.bib
 .latexmkrc
