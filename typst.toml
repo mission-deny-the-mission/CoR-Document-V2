@@ -1,0 +1,14 @@
+[project]
+name = "confirmation-of-registration"
+version = "0.1.0"
+description = "PhD confirmation of registration document"
+authors = ["Harry Hall"]
+
+[template]
+path = "."
+entry = "main.typ"
+thumbnail = "thumbnail.png"
+
+[tool.typst]
+font-paths = []
+compile-args = []

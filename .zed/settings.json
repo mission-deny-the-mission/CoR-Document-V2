@@ -1,0 +1,18 @@
+{
+  "languages": {
+    "LaTeX": {
+      "language_servers": ["texlab"],
+      "soft_wrap": "bounded",
+      "tab_size": 2
+    },
+    "Typst": {
+      "language_servers": ["tinymist"],
+      "soft_wrap": "bounded",
+      "tab_size": 2
+    }
+  },
+  "auto_install_extensions": {
+    "latex": true,
+    "typst": true
+  }
+}

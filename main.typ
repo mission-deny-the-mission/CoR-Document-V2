@@ -20,8 +20,6 @@
 
 #show link: set text(fill: blue)
 
-#bibliography("combined-references.bib")
-
 #align(center)[
   #text(size: 20pt, weight: "bold")[
     Improving Realism and Immersion in Cyber‑Security Educational Scenarios through Generative AI
@@ -97,4 +95,6 @@ The feasibility of generating insecure software and system configurations is dif
 If techniques such as fine tuning and TransMLA are to be used then training may be required. This includes learning about python frameworks such as PyTorch, TensorFlow, and Transformers. Training will also be needed in statistical and survey analysis. Particularly in determining statistical significance.
 
 Training in malware analysis will also be necessary in order to have the skills to evaluate artificially generated malware.
+
+#bibliography("combined-references.bib", style: "harvard-cite-them-right")
 
