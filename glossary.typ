@@ -1,5 +1,5 @@
 // Acronym definitions for the document
-// With proper label-based hyperlink system
+// With individual acronym linking to specific glossary entries
 
 #let acronyms = (
   "llm": ("LLM", "Large Language Model"),
@@ -51,43 +51,90 @@
   "iac": ("IaC", "Infrastructure as Code")
 )
 
-// Function to display full form with short form in parentheses (clickable)
+// Function to create a clickable acronym that links to specific glossary entry
+#let clickable-acronym(key, display-text) = {
+  if key in acronyms {
+    // Map each key to its corresponding label
+    let target = if key == "llm" { <glossary-llm> }
+    else if key == "ai" { <glossary-ai> }
+    else if key == "dl" { <glossary-dl> }
+    else if key == "cot" { <glossary-cot> }
+    else if key == "lora" { <glossary-lora> }
+    else if key == "qlora" { <glossary-qlora> }
+    else if key == "gpt" { <glossary-gpt> }
+    else if key == "llama" { <glossary-llama> }
+    else if key == "moe" { <glossary-moe> }
+    else if key == "rnn" { <glossary-rnn> }
+    else if key == "lstm" { <glossary-lstm> }
+    else if key == "mha" { <glossary-mha> }
+    else if key == "mla" { <glossary-mla> }
+    else if key == "gqa" { <glossary-gqa> }
+    else if key == "mqa" { <glossary-mqa> }
+    else if key == "cuda" { <glossary-cuda> }
+    else if key == "opencl" { <glossary-opencl> }
+    else if key == "llada" { <glossary-llada> }
+    else if key == "rag" { <glossary-rag> }
+    else if key == "cag" { <glossary-cag> }
+    else if key == "ann" { <glossary-ann> }
+    else if key == "alice" { <glossary-alice> }
+    else if key == "ner" { <glossary-ner> }
+    else if key == "mcp" { <glossary-mcp> }
+    else if key == "lru" { <glossary-lru> }
+    else if key == "aicef" { <glossary-aicef> }
+    else if key == "vae" { <glossary-vae> }
+    else if key == "gan" { <glossary-gan> }
+    else if key == "cpu" { <glossary-cpu> }
+    else if key == "gpu" { <glossary-gpu> }
+    else if key == "gpgpu" { <glossary-gpgpu> }
+    else if key == "npu" { <glossary-npu> }
+    else if key == "ram" { <glossary-ram> }
+    else if key == "vram" { <glossary-vram> }
+    else if key == "hbm" { <glossary-hbm> }
+    else if key == "api" { <glossary-api> }
+    else if key == "ctf" { <glossary-ctf> }
+    else if key == "koth" { <glossary-koth> }
+    else if key == "vm" { <glossary-vm> }
+    else if key == "irc" { <glossary-irc> }
+    else if key == "dep" { <glossary-dep> }
+    else if key == "aslr" { <glossary-aslr> }
+    else if key == "rop" { <glossary-rop> }
+    else if key == "sql" { <glossary-sql> }
+    else if key == "sqli" { <glossary-sqli> }
+    else if key == "apg" { <glossary-apg> }
+    else if key == "iac" { <glossary-iac> }
+    else { <glossary-section> }
+
+    link(target, text(fill: blue, display-text))
+  } else {
+    text[Unknown acronym: #key]
+  }
+}
+
+// Function to display full form with short form in parentheses (clickable to specific entry)
 #let acrfull(key) = {
   if key in acronyms {
     let (short, full) = acronyms.at(key)
-    // Create a link that references the glossary section label
-    link(
-      <glossary-section>,
-      text(fill: blue, [#full (#short)])
-    )
+    clickable-acronym(key, [#full (#short)])
   } else {
     text[Unknown acronym: #key]
   }
 }
 
-// Function to display short form only (clickable)
+// Function to display short form only (clickable to specific entry)
 #let acrshort(key) = {
   if key in acronyms {
     let (short, full) = acronyms.at(key)
-    // Create a link that references the glossary section label
-    link(
-      <glossary-section>,
-      text(fill: blue, [#short])
-    )
+    clickable-acronym(key, [#short])
   } else {
     text[Unknown acronym: #key]
   }
 }
 
-// Function to display full form only (clickable)
+// Function to display full form only (clickable to specific entry)
 #let acrlong(key) = {
   if key in acronyms {
     let (short, full) = acronyms.at(key)
-    // Create a link that references the glossary section label
-    link(
-      <glossary-section>,
-      text(fill: blue, [#full])
-    )
+    clickable-acronym(key, [#full])
   } else {
     text[Unknown acronym: #key]
   }
@@ -96,7 +143,7 @@
 // Alias for consistency with previous version
 #let acronym = acrfull
 
-// Function to display full form without hyperlinks (clean version)
+// Plain versions without hyperlinks
 #let acrfull-plain(key) = {
   if key in acronyms {
     let (short, full) = acronyms.at(key)
@@ -106,7 +153,6 @@
   }
 }
 
-// Function to display short form without hyperlinks (clean version)
 #let acrshort-plain(key) = {
   if key in acronyms {
     let (short, full) = acronyms.at(key)
@@ -116,7 +162,6 @@
   }
 }
 
-// Function to display long form without hyperlinks (clean version)
 #let acrlong-plain(key) = {
   if key in acronyms {
     let (short, full) = acronyms.at(key)
@@ -126,49 +171,206 @@
   }
 }
 
-// Plain alias for consistency with previous version (no hyperlinks)
 #let acronym-plain = acrfull-plain
 
-// Function to generate complete glossary with proper label anchor
+// Function to generate glossary with individual labels for each acronym
 #let printglossary() = {
-  // Create the glossary section with a label for linking
   [
     = Acronyms <glossary-section>
 
-    #for key in acronyms.keys().sorted() {
-      let (short, full) = acronyms.at(key)
-      par[#text(weight: "bold")[#short:] #full]
+    // Individual entries with labels for direct linking
+    #if "aicef" in acronyms {
+      let (short, full) = acronyms.at("aicef")
+      par[#text(weight: "bold")[#short:] #full <glossary-aicef>]
+    }
+    #if "alice" in acronyms {
+      let (short, full) = acronyms.at("alice")
+      par[#text(weight: "bold")[#short:] #full <glossary-alice>]
+    }
+    #if "ai" in acronyms {
+      let (short, full) = acronyms.at("ai")
+      par[#text(weight: "bold")[#short:] #full <glossary-ai>]
+    }
+    #if "ann" in acronyms {
+      let (short, full) = acronyms.at("ann")
+      par[#text(weight: "bold")[#short:] #full <glossary-ann>]
+    }
+    #if "apg" in acronyms {
+      let (short, full) = acronyms.at("apg")
+      par[#text(weight: "bold")[#short:] #full <glossary-apg>]
+    }
+    #if "api" in acronyms {
+      let (short, full) = acronyms.at("api")
+      par[#text(weight: "bold")[#short:] #full <glossary-api>]
+    }
+    #if "aslr" in acronyms {
+      let (short, full) = acronyms.at("aslr")
+      par[#text(weight: "bold")[#short:] #full <glossary-aslr>]
+    }
+    #if "cag" in acronyms {
+      let (short, full) = acronyms.at("cag")
+      par[#text(weight: "bold")[#short:] #full <glossary-cag>]
+    }
+    #if "cot" in acronyms {
+      let (short, full) = acronyms.at("cot")
+      par[#text(weight: "bold")[#short:] #full <glossary-cot>]
+    }
+    #if "cpu" in acronyms {
+      let (short, full) = acronyms.at("cpu")
+      par[#text(weight: "bold")[#short:] #full <glossary-cpu>]
+    }
+    #if "ctf" in acronyms {
+      let (short, full) = acronyms.at("ctf")
+      par[#text(weight: "bold")[#short:] #full <glossary-ctf>]
+    }
+    #if "cuda" in acronyms {
+      let (short, full) = acronyms.at("cuda")
+      par[#text(weight: "bold")[#short:] #full <glossary-cuda>]
+    }
+    #if "dep" in acronyms {
+      let (short, full) = acronyms.at("dep")
+      par[#text(weight: "bold")[#short:] #full <glossary-dep>]
+    }
+    #if "dl" in acronyms {
+      let (short, full) = acronyms.at("dl")
+      par[#text(weight: "bold")[#short:] #full <glossary-dl>]
+    }
+    #if "gan" in acronyms {
+      let (short, full) = acronyms.at("gan")
+      par[#text(weight: "bold")[#short:] #full <glossary-gan>]
+    }
+    #if "gpgpu" in acronyms {
+      let (short, full) = acronyms.at("gpgpu")
+      par[#text(weight: "bold")[#short:] #full <glossary-gpgpu>]
+    }
+    #if "gpt" in acronyms {
+      let (short, full) = acronyms.at("gpt")
+      par[#text(weight: "bold")[#short:] #full <glossary-gpt>]
+    }
+    #if "gpu" in acronyms {
+      let (short, full) = acronyms.at("gpu")
+      par[#text(weight: "bold")[#short:] #full <glossary-gpu>]
+    }
+    #if "gqa" in acronyms {
+      let (short, full) = acronyms.at("gqa")
+      par[#text(weight: "bold")[#short:] #full <glossary-gqa>]
+    }
+    #if "hbm" in acronyms {
+      let (short, full) = acronyms.at("hbm")
+      par[#text(weight: "bold")[#short:] #full <glossary-hbm>]
+    }
+    #if "iac" in acronyms {
+      let (short, full) = acronyms.at("iac")
+      par[#text(weight: "bold")[#short:] #full <glossary-iac>]
+    }
+    #if "irc" in acronyms {
+      let (short, full) = acronyms.at("irc")
+      par[#text(weight: "bold")[#short:] #full <glossary-irc>]
+    }
+    #if "koth" in acronyms {
+      let (short, full) = acronyms.at("koth")
+      par[#text(weight: "bold")[#short:] #full <glossary-koth>]
+    }
+    #if "llada" in acronyms {
+      let (short, full) = acronyms.at("llada")
+      par[#text(weight: "bold")[#short:] #full <glossary-llada>]
+    }
+    #if "llama" in acronyms {
+      let (short, full) = acronyms.at("llama")
+      par[#text(weight: "bold")[#short:] #full <glossary-llama>]
+    }
+    #if "llm" in acronyms {
+      let (short, full) = acronyms.at("llm")
+      par[#text(weight: "bold")[#short:] #full <glossary-llm>]
+    }
+    #if "lora" in acronyms {
+      let (short, full) = acronyms.at("lora")
+      par[#text(weight: "bold")[#short:] #full <glossary-lora>]
+    }
+    #if "lru" in acronyms {
+      let (short, full) = acronyms.at("lru")
+      par[#text(weight: "bold")[#short:] #full <glossary-lru>]
+    }
+    #if "lstm" in acronyms {
+      let (short, full) = acronyms.at("lstm")
+      par[#text(weight: "bold")[#short:] #full <glossary-lstm>]
+    }
+    #if "mcp" in acronyms {
+      let (short, full) = acronyms.at("mcp")
+      par[#text(weight: "bold")[#short:] #full <glossary-mcp>]
+    }
+    #if "mha" in acronyms {
+      let (short, full) = acronyms.at("mha")
+      par[#text(weight: "bold")[#short:] #full <glossary-mha>]
+    }
+    #if "mla" in acronyms {
+      let (short, full) = acronyms.at("mla")
+      par[#text(weight: "bold")[#short:] #full <glossary-mla>]
+    }
+    #if "moe" in acronyms {
+      let (short, full) = acronyms.at("moe")
+      par[#text(weight: "bold")[#short:] #full <glossary-moe>]
+    }
+    #if "mqa" in acronyms {
+      let (short, full) = acronyms.at("mqa")
+      par[#text(weight: "bold")[#short:] #full <glossary-mqa>]
+    }
+    #if "ner" in acronyms {
+      let (short, full) = acronyms.at("ner")
+      par[#text(weight: "bold")[#short:] #full <glossary-ner>]
+    }
+    #if "npu" in acronyms {
+      let (short, full) = acronyms.at("npu")
+      par[#text(weight: "bold")[#short:] #full <glossary-npu>]
+    }
+    #if "opencl" in acronyms {
+      let (short, full) = acronyms.at("opencl")
+      par[#text(weight: "bold")[#short:] #full <glossary-opencl>]
+    }
+    #if "qlora" in acronyms {
+      let (short, full) = acronyms.at("qlora")
+      par[#text(weight: "bold")[#short:] #full <glossary-qlora>]
+    }
+    #if "rag" in acronyms {
+      let (short, full) = acronyms.at("rag")
+      par[#text(weight: "bold")[#short:] #full <glossary-rag>]
+    }
+    #if "ram" in acronyms {
+      let (short, full) = acronyms.at("ram")
+      par[#text(weight: "bold")[#short:] #full <glossary-ram>]
+    }
+    #if "rnn" in acronyms {
+      let (short, full) = acronyms.at("rnn")
+      par[#text(weight: "bold")[#short:] #full <glossary-rnn>]
+    }
+    #if "rop" in acronyms {
+      let (short, full) = acronyms.at("rop")
+      par[#text(weight: "bold")[#short:] #full <glossary-rop>]
+    }
+    #if "sql" in acronyms {
+      let (short, full) = acronyms.at("sql")
+      par[#text(weight: "bold")[#short:] #full <glossary-sql>]
+    }
+    #if "sqli" in acronyms {
+      let (short, full) = acronyms.at("sqli")
+      par[#text(weight: "bold")[#short:] #full <glossary-sqli>]
+    }
+    #if "vae" in acronyms {
+      let (short, full) = acronyms.at("vae")
+      par[#text(weight: "bold")[#short:] #full <glossary-vae>]
+    }
+    #if "vm" in acronyms {
+      let (short, full) = acronyms.at("vm")
+      par[#text(weight: "bold")[#short:] #full <glossary-vm>]
+    }
+    #if "vram" in acronyms {
+      let (short, full) = acronyms.at("vram")
+      par[#text(weight: "bold")[#short:] #full <glossary-vram>]
     }
   ]
 }
 
-// Alternative: Print glossary in two columns for better space utilization
-#let printcompactglossary() = {
-  // Create the glossary section with a label for linking
-  [
-    = Acronyms <glossary-section>
-
-    // Display in two columns
-    #let keys = acronyms.keys().sorted()
-    #let mid = calc.ceil(keys.len() / 2)
-
-    #columns(2)[
-      #for i in range(mid) {
-        let key = keys.at(i)
-        let (short, full) = acronyms.at(key)
-        par[#text(weight: "bold")[#short:] #full]
-      }
-    ][
-      #for i in range(mid, keys.len()) {
-        let key = keys.at(i)
-        let (short, full) = acronyms.at(key)
-        par[#text(weight: "bold")[#short:] #full]
-      }
-    ]
-  ]
-}
-
-// Function to generate glossary without any hyperlinks or anchors (plain version)
+// Alternative: Print glossary without any hyperlinks or anchors (plain version)
 #let printplainglossary() = {
   heading(level: 1)[Acronyms]
 
