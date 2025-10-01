@@ -53,10 +53,10 @@ Measuring the flops required for an #acrshort("llm") task is not a good way to m
   columns: 5,
   align: center,
   [*Method*], [*Inference Time*], [*Inference Space*], [*Training Cost*], [*Specialized Strategy*],
-  [Dense Scaling], [😐 Moderate], [😠 High], [😠 Pre-training only], [😐 No],
-  [MoE Scaling], [😐 Low], [😠 High], [😠 Pre-training only], [😠 Load balancing],
-  [Inference-Time Scaling], [😠 High], [😐 Moderate], [😐 Post-training], [😠 RL / reward data],
-  [Parallel Scaling], [😐 Moderate], [😐 Moderate], [😐 Pre- or Post-training], [😐 No],
+  [Dense Scaling], [😐 Moderate], [😠 High], [😠 Pre-training only], [😊 No],
+  [MoE Scaling], [😊 Low], [😠 High], [😠 Pre-training only], [😠 Load balancing],
+  [Inference-Time Scaling], [😠 High], [😐 Moderate], [😊 Post-training], [😠 RL / reward data],
+  [Parallel Scaling], [😐 Moderate], [😐 Moderate], [😊 Pre- or Post-training], [😊 No],
 )
 
 #cite(<chen_parallel_2025>) also tells us about how parameter scaling and parallel scaling compare in terms of loss function, latency, and memory cost. This has the opportunity to answer an old question about machine learning, and that's if parameters or computation are responsible for larger models performing better than smaller ones. Conventionally with dense scaling the two have increased with each other in a proportional manner. With Parallel scaling the number of parameters stays the same, but the number of computations increase. The fact that parallel scaling significantly decreases loss function indicates that increasing computation is a significant factor in model performance, and suggests that's a reason larger models traditionally perform better.

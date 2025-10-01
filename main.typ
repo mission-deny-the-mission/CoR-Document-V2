@@ -24,15 +24,22 @@
   #text(size: 20pt, weight: "bold")[
     Improving Realism and Immersion in Cyber‑Security Educational Scenarios through Generative AI
   ]
-  
+
   #v(1em)
-  
+
   #text(size: 14pt)[Harry Hall]
-  
+
   #v(0.5em)
-  
+
   #text(size: 12pt)[July - September 2025]
 ]
+
+#v(2em)
+
+#outline(
+  title: "Table of Contents",
+  indent: auto
+)
 
 #v(2em)
 
@@ -97,4 +104,3 @@ If techniques such as fine tuning and TransMLA are to be used then training may 
 Training in malware analysis will also be necessary in order to have the skills to evaluate artificially generated malware.
 
 #bibliography("combined-references.bib", style: "harvard-cite-them-right")
-
