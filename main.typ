@@ -69,6 +69,25 @@ Use AI to improve realism, immersion, and to assist learning
 
 = Research Questions
 
+== Hackerbot study
++ What architecture and techniques are the most effective for the educational chatbot powered by LLMs.
+  + Is RAG, CAG, or fine tuning more effective for feeding #acrshort("LLM")s resources about cybersecurity
+  + What sort of prompt engineering works best?
++ How can roleplaying personalities make education bots more effective
+  + What kind of prompting techniques help with roleplaying?
+  + Which models work best for roleplaying in cybersecurity scernarios?
++ Determine what is the most efficient and effective way to run an AI powered assistant
+  + What kind of hardware resources are required to run the models locally?
+  + Can inference be done scalably using only CPUs?
+  + What size of model is needed for an AI bot for this kind of chatbot?
+  + Which #acrshort("LLM")s are most effective?
+
+== Malware generation and obfscuation study
+
++ What techniques are most effective at doing randomized malware generation for malware analysis labs?
++ To what extent can the malware generation be automated? Partly or fully?
++ How can #acrshort("LLM")s be used to obfscuate existing malware in ways that make it more complex to analyze?
+
 #include "literature-review.typ"
 
 = Methodology
