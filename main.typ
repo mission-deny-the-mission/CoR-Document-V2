@@ -85,8 +85,26 @@ Use AI to improve realism, immersion, and to assist learning
 == Malware generation and obfscuation study
 
 + What techniques are most effective at doing randomized malware generation for malware analysis labs?
+  + Can techniques such as RAG and CAG be used to enhance malware generation and obfuscation?
+  + How can MCP servers be used to assist in malware generation?
+  + Methodology for adding compile time and/or static analysis tools to enhance malware generation and obfuscation
+  + To compare effectiveness of one-shot generation, single agent generation, and multi-agent generation
 + To what extent can the malware generation be automated? Partly or fully?
 + How can #acronym("llm")s be used to obfscuate existing malware in ways that make it more complex to analyze?
++ Which models are most effective for malware generation and obfscuation?
+
+== Insecure software and configuration generation
++ What kinds of insecure software and systems configurations can be generated?
++ How independantly can they be generated?
++ What techniques are most effective for generation of insecure software and systems?
+  + How can MCP servers be used to assist in generation of insecure software and systems?
+  + Methodology for using static analysis tools to enhance generation of insecure software and systems
+  + Comparing single agent vs multi-agent generation
+
+== Narrative content generation
++ Which models are most effective for narrative content generation?
++ What resources are needed for narrative content generation?
++ How can image and video generation models be used to create more engaging and realistic narratives?
 
 #include "literature-review.typ"
 
