@@ -63,9 +63,11 @@ Use AI to improve realism, immersion, and to assist learning
   + Setup and test chatbots acting as employees and threat actors in challenges
   + Test the ability of #acronym("llm")s to give hints and tips without giving away complete answers
 + Explore the use of #acronym("ai") in #acronym("apg")
+  + Explore using #acronym("llm")s and image generation models in creating narrative content
+  + Explore using one #acronym("llm") to produce prompts and backstory for a smaller #acronym("LLM") to use
++ Extension tasks:
   + Explore using #acronym("llm")s in sample malware generation for use in malware analysis classes
   + Explore using #acronym("llm")s in generating insecure software and system configurations
-  + Explore using #acronym("llm")s and image generation models in creating narrative content
 
 = Research Questions
 
@@ -105,6 +107,11 @@ Use AI to improve realism, immersion, and to assist learning
 + Which models are most effective for narrative content generation?
 + What resources are needed for narrative content generation?
 + How can image and video generation models be used to create more engaging and realistic narratives?
+
+== Prompt generation
++ Can one model be used to create character sheets and prompts for the smaller hackerbot models?
++ Explore different meta-prompting technqiues
++ Analyze performance of manually written prompts and character sheets vs meta-prompting
 
 #include "literature-review.typ"
 
