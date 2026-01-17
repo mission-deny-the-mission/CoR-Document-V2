@@ -56,18 +56,17 @@ The proposed PhD thesis will cover the uses of Generative AI models such as #acr
 = Aims and Objectives
 
 == Aims:
-Use AI to improve realism, immersion, and to assist learning
++ To enhance the realism and pedagogical effectiveness of cybersecurity training scenarios through the integration of large language models for dynamic, context-aware interactions.
++ To develop and evaluate generative AI techniques for automated creation of cybersecurity training content, including narrative elements, vulnerable systems, and malware samples.
++ To establish practical guidelines for deploying LLM-based tools in resource-constrained educational environments.
 
 == Objectives:
-+ Investigate how #acronym("ai") models can interact with students during cyber security training scenarios
-  + Setup and test chatbots acting as employees and threat actors in challenges
-  + Test the ability of #acronym("llm")s to give hints and tips without giving away complete answers
-+ Explore the use of #acronym("ai") in #acronym("apg")
-  + Explore using #acronym("llm")s and image generation models in creating narrative content
-  + Explore using one #acronym("llm") to produce prompts and backstory for a smaller #acronym("LLM") to use
-+ Extension tasks:
-  + Explore using #acronym("llm")s in sample malware generation for use in malware analysis classes
-  + Explore using #acronym("llm")s in generating insecure software and system configurations
++ Develop an LLM-powered conversational agent integrated with the existing Hackerbot system capable of roleplaying as threat actors and providing adaptive hints without revealing complete solutions.
++ Evaluate the effectiveness of different context-engineering approaches for grounding LLM responses in cybersecurity domain knowledge, using metrics for accuracy, relevance, and response latency.
++ Determine the minimum hardware specifications and optimal model configurations required to deploy educational chatbots at scale within university infrastructure.
++ Design and implement an automated pipeline for generating functional, novel malware samples suitable for student analysis exercises, with validation through static analysis and sandbox testing.
++ Assess student learning outcomes and engagement through controlled studies comparing AI-enhanced scenarios against traditional static exercises.
++ Create a framework for LLM-driven generation of insecure software configurations and vulnerable systems, validated against established vulnerability taxonomies.
 
 = Research Questions
 
@@ -92,12 +91,12 @@ Use AI to improve realism, immersion, and to assist learning
   + Methodology for adding compile time and/or static analysis tools to enhance malware generation and obfuscation
   + To compare effectiveness of one-shot generation, single agent generation, and multi-agent generation
 + To what extent can the malware generation be automated? Partly or fully?
-+ How can #acronym("llm")s be used to obfscuate existing malware in ways that make it more complex to analyze?
-+ Which models are most effective for malware generation and obfscuation?
++ How can #acronym("llm")s be used to obfuscate existing malware in ways that make it more complex to analyze?
++ Which models are most effective for malware generation and obfuscation?
 
 == Insecure software and configuration generation
 + What kinds of insecure software and systems configurations can be generated?
-+ How independantly can they be generated?
++ How independently can they be generated?
 + What techniques are most effective for generation of insecure software and systems?
   + How can MCP servers be used to assist in generation of insecure software and systems?
   + Methodology for using static analysis tools to enhance generation of insecure software and systems
@@ -110,7 +109,7 @@ Use AI to improve realism, immersion, and to assist learning
 
 == Prompt generation
 + Can one model be used to create character sheets and prompts for the smaller hackerbot models?
-+ Explore different meta-prompting technqiues
++ Explore different meta-prompting techniques
 + Analyze performance of manually written prompts and character sheets vs meta-prompting
 
 #include "literature-review.typ"
@@ -147,6 +146,6 @@ If techniques such as fine tuning and TransMLA are to be used then training may 
 
 Training in malware analysis will also be necessary in order to have the skills to evaluate artificially generated malware.
 
-#bibliography("combined-references.bib", style: "harvard-cite-them-right")
+#bibliography("zotero.bib", style: "harvard-cite-them-right")
 
 #printglossary()
