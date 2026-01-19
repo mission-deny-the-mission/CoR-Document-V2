@@ -86,7 +86,7 @@ The proposed PhD thesis will cover the uses of Generative AI models such as #acr
 == Malware generation and obfscuation study
 
 + What techniques are most effective at doing randomized malware generation for malware analysis labs?
-  + Can techniques such as RAG and CAG be used to enhance malware generation and obfuscation?
+  + Can techniques such as RAG and CAG and other context engineering techniques be used to enhance malware generation and obfuscation?
   + How can MCP servers be used to assist in malware generation?
   + Methodology for adding compile time and/or static analysis tools to enhance malware generation and obfuscation
   + To compare effectiveness of one-shot generation, single agent generation, and multi-agent generation
@@ -140,11 +140,41 @@ Generating malware and obfuscating malware is more complicated. This requires th
 
 The feasibility of generating insecure software and system configurations is difficult to determine. It highly depends on the performance of frontier #acronym("llm")s and surrounding tooling. Medium sized uncensored models are capable of generating code for malware, but it is unclear how similar this malware is to malware found in real cyber attacks. Techniques using agentic AI and AI agents will need to be tested and iterated upon.
 
-= Training and development
+= Research Training Program and Progress
 
-If techniques such as fine tuning and TransMLA are to be used then training may be required. This includes learning about python frameworks such as PyTorch, TensorFlow, and Transformers. Training will also be needed in statistical and survey analysis. Particularly in determining statistical significance.
+#let task(body, status: "todo") = {
+  // Define the box appearance based on status
+  let box-content = if status == "done" {
+    rect(width: 12pt, height: 12pt, fill: green.lighten(70%), stroke: 0.8pt + green.darken(20%), radius: 2pt)[
+      #set align(center + horizon)
+      #text(size: 9pt, fill: green.darken(40%), weight: "bold")[✓]
+    ]
+  } else if status == "doing" {
+    rect(width: 12pt, height: 12pt, fill: blue.lighten(70%), stroke: 0.8pt + blue.darken(20%), radius: 2pt)[
+      #set align(center + horizon)
+      #text(size: 9pt, fill: blue.darken(40%), weight: "bold")[–]
+    ]
+  } else {
+    rect(width: 12pt, height: 12pt, stroke: 0.8pt + gray, radius: 2pt)[]
+  }
 
-Training in malware analysis will also be necessary in order to have the skills to evaluate artificially generated malware.
+  // Layout the box and the text side-by-side
+  grid(
+    columns: (20pt, auto),
+    align: horizon,
+    box-content,
+    body
+  )
+}
+
+// Usage examples:
+#task(status: "done")[Incident Response module]
+#task(status: "done")[Systems security module]
+#task(status: "doing")[REMA (Reverse Engineering and Malware Analysis) module]
+#task(status: "todo")[Start Web and Networks module]
+#task(status: "done")[MIT machine learning lectures]
+#task(status: "done")[3 Blue 1 Brown videos on Neural Networks]
+#task(status: "todo")[Look for resources on MLOps (Machine Learning operations)]
 
 #bibliography("zotero.bib", style: "harvard-cite-them-right")
 

@@ -379,6 +379,21 @@
 	keywords = {Computer Science - Computation and Language},
 }
 
+@misc{kwon_efficient_2023,
+	title = {Efficient Memory Management for Large Language Model Serving with {PagedAttention}},
+	url = {http://arxiv.org/abs/2309.06180},
+	doi = {10.48550/arXiv.2309.06180},
+	abstract = {High throughput serving of large language models ({LLMs}) requires batching sufficiently many requests at a time. However, existing systems struggle because the key-value cache ({KV} cache) memory for each request is huge and grows and shrinks dynamically. When managed inefficiently, this memory can be significantly wasted by fragmentation and redundant duplication, limiting the batch size. To address this problem, we propose {PagedAttention}, an attention algorithm inspired by the classical virtual memory and paging techniques in operating systems. On top of it, we build {vLLM}, an {LLM} serving system that achieves (1) near-zero waste in {KV} cache memory and (2) flexible sharing of {KV} cache within and across requests to further reduce memory usage. Our evaluations show that {vLLM} improves the throughput of popular {LLMs} by 2-4\${\textbackslash}times\$ with the same level of latency compared to the state-of-the-art systems, such as {FasterTransformer} and Orca. The improvement is more pronounced with longer sequences, larger models, and more complex decoding algorithms. {vLLM}'s source code is publicly available at https://github.com/vllm-project/vllm},
+	number = {{arXiv}:2309.06180},
+	publisher = {{arXiv}},
+	author = {Kwon, Woosuk and Li, Zhuohan and Zhuang, Siyuan and Sheng, Ying and Zheng, Lianmin and Yu, Cody Hao and Gonzalez, Joseph E. and Zhang, Hao and Stoica, Ion},
+	urldate = {2026-01-19},
+	date = {2023-09-12},
+	eprinttype = {arxiv},
+	eprint = {2309.06180 [cs]},
+	keywords = {Computer Science - Distributed, Parallel, and Cluster Computing, Computer Science - Machine Learning},
+}
+
 @misc{chen_efficientqat_2025,
 	title = {{EfficientQAT}: Efficient Quantization-Aware Training for Large Language Models},
 	url = {http://arxiv.org/abs/2407.11062},
