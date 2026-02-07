@@ -22,16 +22,16 @@
 
 #align(center)[
   #text(size: 20pt, weight: "bold")[
-    Improving Realism and Immersion in Cyber‑Security Educational Scenarios through Generative AI
+    Improving Realism and Immersion in Cyber Security Educational Scenarios through Generative AI
   ]
 
   #v(1em)
 
-  #text(size: 14pt)[Harry Hall]
+  #text(size: 14pt)[Harry James Hall]
 
   #v(0.5em)
 
-  #text(size: 12pt)[July - September 2025]
+  #text(size: 12pt)[July 2025 - January 2026]
 ]
 
 #v(2em)
@@ -43,138 +43,20 @@
 
 #v(2em)
 
-= Introduction
+// Cliffe: "cyber security" has 2 words in the UK
+// Cliffe: Typst seems great actually!
+// Cliffe: I suggest you organise this main file to just be a list of includes, as it's confusing that some whole sections are imports while other top-level sections are not.
 
-The increasing sophistication of cyber threats demands equally advanced training methodologies. Current cybersecurity education faces significant challenges in providing realistic, engaging scenarios that prepare students for real-world situations. Traditional training exercises often rely on static or predictable scenarios that fail to capture the dynamic nature of modern cyber threats.
-
-Most current cybersecurity training exercises are based on static or heuristically randomized scenarios, limiting realism and learning engagement. In particular, the bots currently in use have limited conversational fidelity #cite(<schreuders_hackerbot_2018>). Narrative content is not always generated using AI, and even when it is generated this way the models and techniques are sometimes outdated for example using older models such as GPT-2 #cite(<zacharis_aicef_2023>). Senarios generated using current methods can also have low variety making them predictable.
-
-A significant research gap exists in leveraging state-of-the-art generative AI models for comprehensive cybersecurity education. While some systems incorporate basic AI elements, none fully exploit the potential of modern large language models (LLMs) for dynamic scenario generation, realistic chatbot interactions, and automated vulnerability creation. This thesis addresses this gap by exploring how frontier open generative AI models can enhance realism and immersion in cybersecurity training.
-
-The proposed PhD thesis will cover the uses of Generative AI models such as #acronym("llm") and image generators in educational cybersecurity simulations including hacking challenges such as #acronym("ctf") and #acronym("koth"). This will include using #acronym("llm")s to generate narrative content (thematic learning scenario content), provide realistic chatbots for students to interact with, and even generate randomized challenges such as unique malware for malware analysis challenges or randomly generated insecure systems and software.
-
-= Aims and Objectives
-
-== Aims:
-+ To enhance the realism and pedagogical effectiveness of cybersecurity training scenarios through the integration of large language models for dynamic, context-aware interactions.
-+ To develop and evaluate generative AI techniques for automated creation of cybersecurity training content, including narrative elements, vulnerable systems, and malware samples.
-+ To establish practical guidelines for deploying LLM-based tools in resource-constrained educational environments.
-
-== Objectives:
-+ Develop an LLM-powered conversational agent integrated with the existing Hackerbot system capable of roleplaying as threat actors and providing adaptive hints without revealing complete solutions.
-+ Evaluate the effectiveness of different context-engineering approaches for grounding LLM responses in cybersecurity domain knowledge, using metrics for accuracy, relevance, and response latency.
-+ Determine the minimum hardware specifications and optimal model configurations required to deploy educational chatbots at scale within university infrastructure.
-+ Design and implement an automated pipeline for generating functional, novel malware samples suitable for student analysis exercises, with validation through static analysis and sandbox testing.
-+ Assess student learning outcomes and engagement through controlled studies comparing AI-enhanced scenarios against traditional static exercises.
-+ Create a framework for LLM-driven generation of insecure software configurations and vulnerable systems, validated against established vulnerability taxonomies.
-
-= Research Questions
-
-== Hackerbot study
-+ What architecture and techniques are the most effective for the educational chatbot powered by LLMs.
-  + Is RAG, CAG, or fine tuning more effective for feeding #acronym("llm")s resources about cybersecurity
-  + What sort of prompt engineering works best?
-+ How can roleplaying personalities make education bots more effective
-  + What kind of prompting techniques help with roleplaying?
-  + Which models work best for roleplaying in cybersecurity scernarios?
-+ Determine what is the most efficient and effective way to run an AI powered assistant
-  + What kind of hardware resources are required to run the models locally?
-  + Can inference be done scalably using only CPUs?
-  + What size of model is needed for an AI bot for this kind of chatbot?
-  + Which #acronym("llm")s are most effective?
-
-== Malware generation and obfscuation study
-
-+ What techniques are most effective at doing randomized malware generation for malware analysis labs?
-  + Can techniques such as RAG and CAG and other context engineering techniques be used to enhance malware generation and obfuscation?
-  + How can MCP servers be used to assist in malware generation?
-  + Methodology for adding compile time and/or static analysis tools to enhance malware generation and obfuscation
-  + To compare effectiveness of one-shot generation, single agent generation, and multi-agent generation
-+ To what extent can the malware generation be automated? Partly or fully?
-+ How can #acronym("llm")s be used to obfuscate existing malware in ways that make it more complex to analyze?
-+ Which models are most effective for malware generation and obfuscation?
-
-== Insecure software and configuration generation
-+ What kinds of insecure software and systems configurations can be generated?
-+ How independently can they be generated?
-+ What techniques are most effective for generation of insecure software and systems?
-  + How can MCP servers be used to assist in generation of insecure software and systems?
-  + Methodology for using static analysis tools to enhance generation of insecure software and systems
-  + Comparing single agent vs multi-agent generation
-
-== Narrative content generation
-+ Which models are most effective for narrative content generation?
-+ What resources are needed for narrative content generation?
-+ How can image and video generation models be used to create more engaging and realistic narratives?
-
-== Prompt generation
-+ Can one model be used to create character sheets and prompts for the smaller hackerbot models?
-+ Explore different meta-prompting techniques
-+ Analyze performance of manually written prompts and character sheets vs meta-prompting
-
+#include "introduction.typ"
+#include "aims-and-objectives.typ"
+#include "research-questions.typ"
+// Cliffe: literature review should include SecGen, Hackerbot, and position your work.
 #include "literature-review.typ"
-
-= Methodology
-
-This PhD is following the design science methodology for the production of artifacts and design knowledge. This will involve the production of several artifacts, some of which will be integrated into the existing Hacktivity and SecGen systems in use within the University (specifically the BEC school). Success will be measured through both technical criteria and student experience.
-
-Design science methodology is a methodology involves the creation and evaluation of novel artifacts to solve problems. These artifacts can involve models, methods, systems, or processes. The artifacts must have been demonstrated to provide utility in the real world. The methodology uses an iterative process of design, construction, evaluation, and refinement. Because of this ongoing process of refinement there will not be a fixed number of studies defined at this stage. The studies will be further defined as part of the process of refining the design and implementation of the systems. The research outputs will be the design of the system, the research showing the usefulness of the design, and the created software artifacts themselves.
-
-The software development cycle for this research will follow an agile approach, integrating with the design science methodology to ensure continuous improvement and adaptation. The development process will be organized into iterative sprints, each focusing on specific components of the AI-enhanced cybersecurity training system. Each sprint will include requirements analysis, design, implementation, testing, and deployment phases, allowing for rapid prototyping and frequent feedback incorporation from both technical stakeholders and end-users.
-
-Version control using Git will be employed throughout the development lifecycle to track changes, facilitate collaboration, and maintain code quality. Regular code reviews and documentation updates will be conducted to maintain software quality and knowledge transfer.
-
-Technical criteria include the functionality of the system, the associated costs and resource usage associated with using the #acronym("ai")s. For scenario generation the time taken and success rate at generating scenarios and malware must be measured. For the chatbot studies responsiveness and generation speed in tokens per second must be measured. Responsivness to student queries is important for satisfaction of the students.
-
-Student experience will be measured through surveys. Statistical and thematic analysis will be performed on the surveys to see how students felt about the new capabilities of the system. It must also be ensured that the chatbots do not give away information or answers that the students should not have.
-
+#include "methodology.typ"
+// Cliffe: outline how your research involves separate DSR studies, and list them.
 #include "studies.typ"
-
-= Project Feasibility and Resources
-
-Generating narrative content should be more or less trivial for current machine learning algorithms. It's well within the capabilities of current LLMs.
-
-Integrating AI into hackerbot is well under way. The main concerns are over resource consumption and how well smaller models are able to perform the tasks required. More thorough testing of small model capabilties is required. This is largely an infrastructure problem and won't get in the way of proving it to be possible. Small models capable of running on limited infrastructure such as Gemma 1B and LFM2 1.2B have been found, and initial tests on inference speed and output quality are positive.
-
-Generating malware and obfuscating malware is more complicated. This requires the use of powerful #acronym("llm")s that require lots of computational resources. The problem being that cloud hosting is made difficult by the nature of generating malware and potentially requiring uncensored models.
-
-The feasibility of generating insecure software and system configurations is difficult to determine. It highly depends on the performance of frontier #acronym("llm")s and surrounding tooling. Medium sized uncensored models are capable of generating code for malware, but it is unclear how similar this malware is to malware found in real cyber attacks. Techniques using agentic AI and AI agents will need to be tested and iterated upon.
-
-= Research Training Program and Progress
-
-#let task(body, status: "todo") = {
-  // Define the box appearance based on status
-  let box-content = if status == "done" {
-    rect(width: 12pt, height: 12pt, fill: green.lighten(70%), stroke: 0.8pt + green.darken(20%), radius: 2pt)[
-      #set align(center + horizon)
-      #text(size: 9pt, fill: green.darken(40%), weight: "bold")[✓]
-    ]
-  } else if status == "doing" {
-    rect(width: 12pt, height: 12pt, fill: blue.lighten(70%), stroke: 0.8pt + blue.darken(20%), radius: 2pt)[
-      #set align(center + horizon)
-      #text(size: 9pt, fill: blue.darken(40%), weight: "bold")[–]
-    ]
-  } else {
-    rect(width: 12pt, height: 12pt, stroke: 0.8pt + gray, radius: 2pt)[]
-  }
-
-  // Layout the box and the text side-by-side
-  grid(
-    columns: (20pt, auto),
-    align: horizon,
-    box-content,
-    body
-  )
-}
-
-// Usage examples:
-#task(status: "done")[Incident Response module]
-#task(status: "done")[Systems security module]
-#task(status: "doing")[REMA (Reverse Engineering and Malware Analysis) module]
-#task(status: "todo")[Start Web and Networks module]
-#task(status: "done")[MIT machine learning lectures]
-#task(status: "done")[3 Blue 1 Brown videos on Neural Networks]
-#task(status: "todo")[Look for resources on MLOps (Machine Learning operations)]
+#include "feasibility.typ"
+#include "research_training.typ"
 
 #bibliography("zotero.bib", style: "harvard-cite-them-right")
 

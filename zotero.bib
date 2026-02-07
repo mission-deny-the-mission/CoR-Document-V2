@@ -265,6 +265,22 @@
 	keywords = {Computer Science - Artificial Intelligence, Computer Science - Machine Learning},
 }
 
+@misc{cheng_conditional_2026,
+	title = {Conditional Memory via Scalable Lookup: A New Axis of Sparsity for Large Language Models},
+	url = {http://arxiv.org/abs/2601.07372},
+	doi = {10.48550/arXiv.2601.07372},
+	shorttitle = {Conditional Memory via Scalable Lookup},
+	abstract = {While Mixture-of-Experts ({MoE}) scales capacity via conditional computation, Transformers lack a native primitive for knowledge lookup, forcing them to inefficiently simulate retrieval through computation. To address this, we introduce conditional memory as a complementary sparsity axis, instantiated via Engram, a module that modernizes classic \$N\$-gram embedding for O(1) lookup. By formulating the Sparsity Allocation problem, we uncover a U-shaped scaling law that optimizes the trade-off between neural computation ({MoE}) and static memory (Engram). Guided by this law, we scale Engram to 27B parameters, achieving superior performance over a strictly iso-parameter and iso-{FLOPs} {MoE} baseline. Most notably, while the memory module is expected to aid knowledge retrieval (e.g., {MMLU} +3.4; {CMMLU} +4.0), we observe even larger gains in general reasoning (e.g., {BBH} +5.0; {ARC}-Challenge +3.7) and code/math domains{\textasciitilde}({HumanEval} +3.0; {MATH} +2.4). Mechanistic analyses reveal that Engram relieves the backbone's early layers from static reconstruction, effectively deepening the network for complex reasoning. Furthermore, by delegating local dependencies to lookups, it frees up attention capacity for global context, substantially boosting long-context retrieval (e.g., Multi-Query {NIAH}: 84.2 to 97.0). Finally, Engram establishes infrastructure-aware efficiency: its deterministic addressing enables runtime prefetching from host memory, incurring negligible overhead. We envision conditional memory as an indispensable modeling primitive for next-generation sparse models.},
+	number = {{arXiv}:2601.07372},
+	publisher = {{arXiv}},
+	author = {Cheng, Xin and Zeng, Wangding and Dai, Damai and Chen, Qinyu and Wang, Bingxuan and Xie, Zhenda and Huang, Kezhao and Yu, Xingkai and Hao, Zhewen and Li, Yukun and Zhang, Han and Zhang, Huishuai and Zhao, Dongyan and Liang, Wenfeng},
+	urldate = {2026-01-20},
+	date = {2026-01-12},
+	eprinttype = {arxiv},
+	eprint = {2601.07372 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
 @online{noauthor_constructivism_nodate,
 	title = {Constructivism},
 	url = {https://www.buffalo.edu/catt/teach/develop/theory/constructivism.html},
@@ -1186,6 +1202,22 @@ What does it mean to think, to question, to understand? These are the deep water
 	note = {Section: blog},
 }
 
+@misc{lasby_reap_2025,
+	title = {{REAP} the Experts: Why Pruning Prevails for One-Shot {MoE} compression},
+	url = {http://arxiv.org/abs/2510.13999},
+	doi = {10.48550/arXiv.2510.13999},
+	shorttitle = {{REAP} the Experts},
+	abstract = {Sparsely-activated Mixture-of-Experts ({SMoE}) models offer efficient pre-training and low latency but their large parameter counts create significant memory overhead, motivating research into expert compression. Contrary to recent findings favouring expert merging on discriminative benchmarks, we demonstrate that expert pruning is a superior strategy for generative tasks. We prove that merging introduces an irreducible error by causing a "functional subspace collapse", due to the loss of the router's independent, input-dependent control over experts. Leveraging this insight, we propose Router-weighted Expert Activation Pruning ({REAP}), a novel pruning criterion that considers both router gate-values and expert activation norms. Across a diverse set of {SMoE} models ranging from 20B to 1T parameters, {REAP} consistently outperforms merging and other pruning methods on generative benchmarks, especially at 50\% compression. Notably, our method achieves near-lossless compression on code generation and tool-calling tasks with Qwen3-Coder-480B and Kimi-K2, even after pruning 50\% of experts.},
+	number = {{arXiv}:2510.13999},
+	publisher = {{arXiv}},
+	author = {Lasby, Mike and Lazarevich, Ivan and Sinnadurai, Nish and Lie, Sean and Ioannou, Yani and Thangarasa, Vithursan},
+	urldate = {2026-01-29},
+	date = {2025-10-15},
+	eprinttype = {arxiv},
+	eprint = {2510.13999 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Machine Learning},
+}
+
 @article{orvieto_resurrecting_2023,
 	title = {Resurrecting Recurrent Neural Networks for Long Sequences},
 	url = {https://openreview.net/forum?id=M3Yd3QyRG4},
@@ -1388,6 +1420,21 @@ What does it mean to think, to question, to understand? These are the deep water
 	author = {{Michiel Lemmens}},
 	urldate = {2025-06-30},
 	date = {2021-02-04},
+}
+
+@misc{huang_step3-vl-10b_2026,
+	title = {{STEP}3-{VL}-10B Technical Report},
+	url = {http://arxiv.org/abs/2601.09668},
+	doi = {10.48550/arXiv.2601.09668},
+	abstract = {We present {STEP}3-{VL}-10B, a lightweight open-source foundation model designed to redefine the trade-off between compact efficiency and frontier-level multimodal intelligence. {STEP}3-{VL}-10B is realized through two strategic shifts: first, a unified, fully unfrozen pre-training strategy on 1.2T multimodal tokens that integrates a language-aligned Perception Encoder with a Qwen3-8B decoder to establish intrinsic vision-language synergy; and second, a scaled post-training pipeline featuring over 1k iterations of reinforcement learning. Crucially, we implement Parallel Coordinated Reasoning ({PaCoRe}) to scale test-time compute, allocating resources to scalable perceptual reasoning that explores and synthesizes diverse visual hypotheses. Consequently, despite its compact 10B footprint, {STEP}3-{VL}-10B rivals or surpasses models 10\${\textbackslash}times\$-20\${\textbackslash}times\$ larger (e.g., {GLM}-4.6V-106B, Qwen3-{VL}-235B) and top-tier proprietary flagships like Gemini 2.5 Pro and Seed-1.5-{VL}. Delivering best-in-class performance, it records 92.2\% on {MMBench} and 80.11\% on {MMMU}, while excelling in complex reasoning with 94.43\% on {AIME}2025 and 75.95\% on {MathVision}. We release the full model suite to provide the community with a powerful, efficient, and reproducible baseline.},
+	number = {{arXiv}:2601.09668},
+	publisher = {{arXiv}},
+	author = {Huang, Ailin and Yao, Chengyuan and Han, Chunrui and Wan, Fanqi and Guo, Hangyu and Lv, Haoran and Zhou, Hongyu and Wang, Jia and Zhou, Jian and Sun, Jianjian and Hu, Jingcheng and Lin, Kangheng and Zhao, Liang and Huang, Mitt and Yuan, Song and Qu, Wenwen and Wang, Xiangfeng and Lai, Yanlin and Zhao, Yingxiu and Zhang, Yinmin and Shi, Yukang and Chen, Yuyang and Weng, Zejia and Meng, Ziyang and Li, Ang and Kong, Aobo and Dong, Bo and Wan, Changyi and Wang, David and Qi, Di and Li, Dingming and Yu, En and Li, Guopeng and Yin, Haiquan and Zhou, Han and Zhang, Hanshan and Yan, Haolong and Zhou, Hebin and Peng, Hongbo and Zhang, Jiaran and Lv, Jiashu and Fu, Jiayi and Cheng, Jie and Zhou, Jie and Yin, Jisheng and Xie, Jingjing and Wu, Jingwei and Zhang, Jun and Liu, Junfeng and Tan, Kaijun and Yan, Kaiwen and Chen, Liangyu and Chen, Lina and Li, Mingliang and Zhao, Qian and Sun, Quan and Pang, Shaoliang and Fan, Shengjie and Shang, Shijie and Zhang, Siyuan and You, Tianhao and Ji, Wei and Xie, Wuxun and Yang, Xiaobo and Hou, Xiaojie and Jiao, Xiaoran and Ren, Xiaoxiao and Kong, Xiangwen and Huang, Xin and Wu, Xin and Chen, Xing and Wang, Xinran and Zhang, Xuelin and Wei, Yana and Li, Yang and Xu, Yanming and Shen, Yeqing and Peng, Yuang and Peng, Yue and Zhou, Yu and Li, Yusheng and Yang, Yuxiang and Zhang, Yuyang and Xie, Zhe and Huang, Zhewei and Lu, Zhenyi and Fan, Zhimin and Cheng, Zihui and Jiang, Daxin and Han, Qi and Zhang, Xiangyu and Zhu, Yibo and Ge, Zheng},
+	urldate = {2026-01-21},
+	date = {2026-01-15},
+	eprinttype = {arxiv},
+	eprint = {2601.09668 [cs]},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition},
 }
 
 @misc{christiano_supervising_2018,
