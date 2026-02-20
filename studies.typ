@@ -21,27 +21,28 @@ The high level stages for this study are broken down into the following practica
 // put a paragraph here summarizing the above then add bulletpoints for different techniques
 The first DSR study is about designing, implementing, and evaluating educational chatbots using language models. These chatbots will work within lab environments used to teach students cybersecurity concepts and technqiues; they will roleplay different characters, provide support, and be used to demonstrate attacks against AI agents and models such as prompt injection. This will involve looking at different models, context engineering, and prompt engineering techniques. Making the chatbot secure against potential attacks from students and attackers working with the platform is something that will need to be discussed. Getting the system to work at scale within reasonable resource constraints is an important part of this study.
 
-  - Evaluate LLM techniques
-    - Techniques including TransMLA, Quantization, and fine tuning wil be explored to increase model generation speed and output quality
-    - Evaluate context engineering methods such as CAG and RAG
-    - Model Selection and Optimization:
-      - Benchmark a diverse range of models, from 1T parameter frontier models to 1B parameter mobile-optimized models, using technical cyber security datasets to assess base knowledge.
-      - Test various quantization levels (4-bit, 8-bit) to find the "sweet spot" between inference speed and conversational fidelity.
-      - Fine-tune a subset of models on technical dialogue datasets if base models fail to maintain character or technical accuracy.
-      - Comparison metrics include
-        - Prompt injection vulnerability
-        - Instruction following
-        - Knowledge of cyber-security
-        - Helpfulness to students
-        - Tool calling accuracy
-        - Role playing ability
-  - Design a "role-play" engine that can inject scenario-specific context (narrative, technical environment, character traits) into the system prompt.
-    - Design integration points for real-time technical feedback, enabling the bot to acknowledge student actions within the simulation.
+- Evaluate LLM techniques
+  - Techniques including TransMLA, Quantization, and fine tuning wil be explored to increase model generation speed and output quality
+  - Evaluate context engineering methods such as CAG and RAG
+  - Model Selection and Optimization:
+    - Benchmark a diverse range of models, from 1T parameter frontier models to 1B parameter mobile-optimized models, using technical cyber security datasets to assess base knowledge.
+    - Test various quantization levels (4-bit, 8-bit) to find the "sweet spot" between inference speed and conversational fidelity.
+    - Fine-tune a subset of models on technical dialogue datasets if base models fail to maintain character or technical accuracy.
+    - Comparison metrics include
+      - Prompt injection vulnerability
+      - Instruction following
+      - Knowledge of cyber-security
+      - Helpfulness to students
+      - Tool calling accuracy
+      - Role playing ability
+- Design a "role-play" engine that can inject scenario-specific context (narrative, technical environment, character traits) into the system prompt.
+  - Design integration points for real-time technical feedback, enabling the bot to acknowledge student actions within the simulation.
     
 
 === Software Development and Integration:
 // Paragraph here talking about existing solutions summarising the paragraphs above
   - Implementation of a new software artifact that is a  chatbot based on hackerbot using the LLM techniques developed during the design phase
+  - Using an exisiting chatbot framework such as the orginal hackerbot or something like zeroclaw or openclaw an educational chatbot will be developed and SecGen refactored to generate the correct configuration
   - Refactor the existing Hackerbot codebase to support a modular backend, allowing for easy switching between different LLM providers (e.g., local Ollama/vLLM instances vs. remote APIs).
 // Diagram here about hackerbot architecture
 #figure(
@@ -86,7 +87,6 @@ This will require a system to be designed and implemented. As part of the design
     - Look at achievable tokens per second, prompt processing speed, and batch sizes
     - Compare image model generation speeds, quality, and resource consumption
     - Grade responses from LLMs based on their appropriateness and quality of narrative content
-+ *Expected Duration:* 3-4 weeks
 
 ==== Implement narrative content generation system
 + Setup inference infrastructure (local and cloud proxies)
@@ -114,7 +114,7 @@ Along with the ability to create software LLMs can be used to produce #acrfull("
 This part is likely to require the use of advanced frontier models and/or fine-tuned models for this specific purpose. As part of this process the labs generated will need to be tested either automatically or manually to make sure they are both built correctly and are indeed vulnerable. Part of this could involve asking the model to generate a solution script designed to exploit the vulnerability in the lab and retrieve any flags therein. An automated testing system could then use this solution on an instance of the generated lab to ensure it is vulnerable. If the lab is found to not be solvable by the script then the model could be prompted to fix the lab, or a human signalled for manual intervention. This could involve a separate LLM agent configured specifically for debugging broken labs. These different approaches will need to be tested, evaluated, and refined before being compared.
 
 ==== Design the system
-+ *Compare prompting stratedgies*: zero-shot, one-shot, and few-shot techniques
++ *Compare prompting strategies*: zero-shot, one-shot, and few-shot techniques
 + *Compare single agent vs multi-agent approaches:*: There are single agent systems like Codex and multi-agent systems like Claude Code or OpenCode
 + *Explore MCP and skills:*: Different add ons and sources of information can be used to provide context, commands, and tools for an LLM to work with
 + *Investigate context engineering techniques:* These include RAG and agentic exploration
@@ -125,7 +125,9 @@ This part is likely to require the use of advanced frontier models and/or fine-t
 Once a design has been chosen the system will need to be built and integrated into the existing framework of SecGen or other parts of the Hacktivity system. The system may in part be based on existing open source frameworks and tools such as OpenCode, OpenClaw, or MicroClaw.
 
 ==== Testing and evaluating the generated systems
-The systems generated by the APG system will be evaluated for how novel, relevant, and educational they are. In addition the length of time required to generate the content and the resources consume will be measured. If the resources required are too high different model architectures will be considered along with tweaks to the inference infrastructure and software such as comparing llama.cpp, ik_llama.cpp, ktransfomers, and SGLang. Advanced techniques such as CPU GPU hybrid inference with expert offloading or KV Cache quantization may be attempted. 
+The systems generated by the APG system will be evaluated for how novel, relevant, and educational they are. In addition the length of time required to generate the content and the resources consume will be measured. If the resources required are too high different model architectures will be considered along with tweaks to the inference infrastructure and software such as comparing llama.cpp, ik_llama.cpp, ktransfomers, and SGLang. Advanced techniques such as CPU GPU hybrid inference with expert offloading or KV Cache quantization may be attempted.
+
+
 
 /*
 
